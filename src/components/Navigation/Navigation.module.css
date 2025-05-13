@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--main);
+  transition: color 200ms ease-in-out;
+  cursor: pointer;
+  padding: 24px 0;
+}
+
+.active {
+  color: var(--button-hover);
+}
+
+.home_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

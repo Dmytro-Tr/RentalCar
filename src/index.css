@@ -1,11 +1,21 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css?family=Manrope:regular,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Inter:regular,500,700&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #ffffff;
+:root {
+  --main: #101828;
+  --gray: #8E929A;
+  --button: #3470FF;
+  --button-hover: #0B44CD;
+  --gray-light: #DADDE1;
+  --badges: #F2F4F7;
+  --inputs: #F7F7F7;
+  --white: #FFFFFF;
+
+  --font-family: "Manrope", sans-serif;
+  --second-family: "Inter", system-ui;
+
+  font-family: Inter, system-ui, Manrope, sans-serif;
+  font-weight: 400;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
