@@ -10,7 +10,7 @@
   color: var(--main);
   transition: color 200ms ease-in-out;
   cursor: pointer;
-  padding: 24px 0;
+  padding: 22px 0;
 }
 
 .active {
