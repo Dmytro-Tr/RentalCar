@@ -1,15 +1,19 @@
 .button {
   border-radius: 12px;
-  padding: 12px 99px;
+  padding: 12px 60px;
   width: 276px;
   height: 44px;
   background: var(--button);
+  border: none;
+  margin: 0 auto;
 
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
   line-height: 125%;
   color: var(--white);
+
+  transition: background-color 250ms ease-in;
 }
 
 .button:hover {
