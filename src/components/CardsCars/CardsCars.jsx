@@ -9,9 +9,9 @@ const CardsCars = () => {
   const dispatch = useDispatch();
   const { cars, page, totalPages } = useSelector((state) => state.cars);
 
-  console.log("CardsCars", cars);
-  console.log("CardsCars page", page);
-  console.log("CardsCars totalPages", totalPages);
+  // console.log("CardsCars", cars);
+  // console.log("CardsCars page", page);
+  // console.log("CardsCars totalPages", totalPages);
 
   useEffect(() => {
     dispatch(fetchCars(1));

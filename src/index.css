@@ -27,7 +27,7 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
   margin: 0 auto;
-  color: #F5EFE7;
+  color: var(--main);
 }
 
 h1,

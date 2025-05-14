@@ -1,0 +1,79 @@
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  width: 924px;
+  margin: 0 auto 56px;
+}
+
+.boxFilter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.label {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.select {
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 204px;
+  height: 44px;
+  border: none;
+  background: var(--inputs);
+  appearance: none;
+}
+
+.boxInput {
+  display: flex;
+}
+
+.inputLeft {
+  border: none;
+  border-right: 1px solid var(--gray-light);
+  border-radius: 12px 0 0 12px;
+  width: 160px;
+  height: 44px;
+  background: var(--inputs);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  padding-left: 24px;
+}
+
+.inputRight {
+  border-radius: 0 12px 12px 0;
+  width: 160px;
+  height: 44px;
+  background: var(--inputs);
+  border: none;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  padding-left: 24px;
+}
+
+.inputLeft::placeholder,
+.inputRight::placeholder {
+  color: var(--main);
+}
+
+.button {
+  border-radius: 12px;
+  padding: 12px 51px;
+  width: 156px;
+  height: 44px;
+}
