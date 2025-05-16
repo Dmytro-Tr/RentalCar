@@ -43,11 +43,11 @@ const Filter = ({ onFilter }) => {
       mileageFrom: formData.mileageFrom ? Number(formData.mileageFrom) : undefined,
       mileageTo: formData.mileageTo ? Number(formData.mileageTo) : undefined,
     };
-    console.log("formData", formData);
-    console.log(
-      "Cars",
-      cars.map((car) => car.rentalPrice)
-    );
+    // console.log("formData", formData);
+    // console.log(
+    //   "Cars",
+    //   cars.map((car) => car.rentalPrice)
+    // );
 
     onFilter(parsedFilters);
   };

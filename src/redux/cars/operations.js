@@ -12,7 +12,7 @@ export const fetchCars = createAsyncThunk("cars/fetchCars", async ({ page = 1, f
     if (filters.mileageFrom) params.append("mileageFrom", filters.mileageFrom);
     if (filters.mileageTo) params.append("mileageTo", filters.mileageTo);
 
-    console.log("FETCH PARAMS:", params.toString());
+    // console.log("FETCH PARAMS:", params.toString());
     const response = await axios.get(`/cars?${params.toString()}`);
 
     return { ...response.data, page };

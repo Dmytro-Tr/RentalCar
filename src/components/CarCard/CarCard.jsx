@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import s from "./carCard.module.css";
 
@@ -20,7 +21,9 @@ const CarCard = ({ car }) => {
           {car.type} | {car.mileage.toLocaleString("en-US").replace(/,/g, " ")} km
         </p>
       </div>
-      <Button text="Read more" />
+      <NavLink to={`/catalog/${car.id}`} className={s.navLink}>
+        Read more
+      </NavLink>
     </li>
   );
 };

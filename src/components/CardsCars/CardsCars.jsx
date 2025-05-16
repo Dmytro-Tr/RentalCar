@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 import Filter from "../Filter/Filter";
 import s from "./cardsCars.module.css";
 import { selectCars, selectTotalPages } from "../../redux/cars/selectors";
+import ButtonLoadMore from "../ButtonLoadMore/ButtonLoadMore";
 
 const CardsCars = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const CardsCars = () => {
   const [page, setPage] = useState(1);
   const [filteredCars, setFilteredCars] = useState([]);
   const [isFilterApplied, setIsFilterApplied] = useState(false);
+
+  console.log("Cars", cars);
 
   useEffect(() => {
     setPage(1);
@@ -50,8 +53,6 @@ const CardsCars = () => {
     setFilters(newFilters);
   };
 
-  // const carsToShow = filteredCars.length > 0 || Object.keys(filters).length > 0 ? filteredCars : cars;
-
   const carsToShow = isFilterApplied ? filteredCars : cars;
 
   return (
@@ -62,11 +63,9 @@ const CardsCars = () => {
           <CarCard key={car.id} car={car} />
         ))}
       </ul>
-      {!isFilterApplied && page < totalPages && (
+      {isFilterApplied && page < totalPages && (
         <div>
-          <button onClick={handleLoadMore} type="button" className={s.button}>
-            Load more
-          </button>
+          <ButtonLoadMore onClick={handleLoadMore} type="button" />
         </div>
       )}
     </>
