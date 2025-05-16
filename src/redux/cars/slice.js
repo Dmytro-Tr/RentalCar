@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBrands, fetchCars } from "./operations";
 
+const initialState = {
+  cars: [],
+  brands: [],
+  totalCars: 0,
+  page: 1,
+  totalPages: 0,
+  isLoading: false,
+  error: null,
+};
+
 const carsSlice = createSlice({
   name: "cars",
-  initialState: {
-    cars: [],
-    brands: [],
-    totalCars: 0,
-    page: 1,
-    totalPages: 0,
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder

@@ -19,7 +19,7 @@ const CarCard = ({ car }) => {
         <p className={s.text}>
           {car.type} | {car.mileage.toLocaleString("en-US").replace(/,/g, " ")} km
         </p>
-      </div>{" "}
+      </div>
       <Button text="Read more" />
     </li>
   );

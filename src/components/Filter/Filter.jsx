@@ -11,19 +11,23 @@ const Filter = ({ onFilter }) => {
   const cars = useSelector(selectCars);
   const [formData, setFormData] = useState({
     brand: "",
-    price: "",
+    rentalPrice: "",
     mileageFrom: "",
     mileageTo: "",
   });
-
-  const carsPrices = [...new Set(cars.map((car) => Number(car.rentalPrice)))].sort((a, b) => a - b);
-  const minMileage = Math.min(...cars.map((car) => car.mileage));
-  const maxMileage = Math.max(...cars.map((car) => car.mileage));
+  const [allPrices, setAllPrices] = useState([]);
 
   useEffect(() => {
     dispatch(fetchBrands());
-    dispatch(fetchCars(1));
+    dispatch(fetchCars({ page: 1, filters: {} }));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (cars.length > 0 && allPrices.length === 0) {
+      const prices = [...new Set(cars.map((car) => Number(car.rentalPrice)))].sort((a, b) => a - b);
+      setAllPrices(prices);
+    }
+  }, [cars, allPrices.length]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -32,7 +36,20 @@ const Filter = ({ onFilter }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFilter(formData);
+
+    const parsedFilters = {
+      ...formData,
+      rentalPrice: formData.rentalPrice ? Number(formData.rentalPrice) : undefined,
+      mileageFrom: formData.mileageFrom ? Number(formData.mileageFrom) : undefined,
+      mileageTo: formData.mileageTo ? Number(formData.mileageTo) : undefined,
+    };
+    console.log("formData", formData);
+    console.log(
+      "Cars",
+      cars.map((car) => car.rentalPrice)
+    );
+
+    onFilter(parsedFilters);
   };
 
   return (
@@ -40,9 +57,7 @@ const Filter = ({ onFilter }) => {
       <div className={s.boxFilter}>
         <label className={s.label}>Car brand</label>
         <select name="brand" value={formData.brand} onChange={handleChange} className={s.select}>
-          <option value="" disabled hidden>
-            Choose a brand
-          </option>
+          <option value="">Choose a brand</option>
           {brands.map((brand) => (
             <option key={brand} value={brand}>
               {brand}
@@ -52,11 +67,9 @@ const Filter = ({ onFilter }) => {
       </div>
       <div className={s.boxFilter}>
         <label className={s.label}>Price/ 1 hour</label>
-        <select name="price" value={formData.price} onChange={handleChange} className={s.select}>
-          <option value="" disabled hidden>
-            Choose a price
-          </option>
-          {carsPrices.map((p) => (
+        <select name="rentalPrice" value={formData.rentalPrice} onChange={handleChange} className={s.select}>
+          <option value="">Choose a price</option>
+          {allPrices.map((p) => (
             <option key={p} value={p}>
               To ${p}
             </option>
@@ -69,8 +82,7 @@ const Filter = ({ onFilter }) => {
           <input
             type="text"
             name="mileageFrom"
-            // placeholder="From"
-            placeholder={`From (${minMileage})`}
+            placeholder="From"
             className={s.inputLeft}
             value={formData.mileageFrom}
             onChange={handleChange}
@@ -78,15 +90,14 @@ const Filter = ({ onFilter }) => {
           <input
             type="text"
             name="mileageTo"
-            // placeholder="To"
-            placeholder={`To (${maxMileage})`}
+            placeholder="To"
             className={s.inputRight}
             value={formData.mileageTo}
             onChange={handleChange}
           />
         </div>
       </div>
-      <Button text={"Search"} className={s.button} />
+      <Button text="Search" className={s.button} />
     </form>
   );
 };

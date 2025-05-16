@@ -9,40 +9,64 @@ import { selectCars, selectTotalPages } from "../../redux/cars/selectors";
 
 const CardsCars = () => {
   const dispatch = useDispatch();
-  // const { cars, page, totalPages } = useSelector((state) => state.cars);
   const cars = useSelector(selectCars);
   const totalPages = useSelector(selectTotalPages);
   const [filters, setFilters] = useState({});
   const [page, setPage] = useState(1);
+  const [filteredCars, setFilteredCars] = useState([]);
+  const [isFilterApplied, setIsFilterApplied] = useState(false);
 
-  console.log("CardsCars", cars);
-  console.log("CardsCars page", page);
-  console.log("CardsCars totalPages", totalPages);
-
-  // При першому завантаженні або зміні фільтрів — оновлюємо сторінку та робимо новий запит
   useEffect(() => {
     setPage(1);
     dispatch(fetchCars({ page: 1, filters }));
   }, [dispatch, filters]);
 
+  useEffect(() => {
+    if (cars.length === 0) return;
+
+    let result = [...cars];
+
+    if (filters.rentalPrice !== undefined) {
+      result = result.filter((car) => Number(car.rentalPrice) === filters.rentalPrice);
+    }
+    if (filters.mileageFrom !== undefined) {
+      result = result.filter((car) => car.mileage >= filters.mileageFrom);
+    }
+    if (filters.mileageTo !== undefined) {
+      result = result.filter((car) => car.mileage <= filters.mileageTo);
+    }
+
+    setFilteredCars(result);
+    setIsFilterApplied(true);
+  }, [cars, filters]);
+
   const handleLoadMore = () => {
     const nextPage = page + 1;
-    // dispatch(fetchCars({ page: page + 1, filters }));
     dispatch(fetchCars({ page: nextPage, filters }));
     setPage(nextPage);
   };
 
+  const handleFilter = (newFilters) => {
+    setFilters(newFilters);
+  };
+
+  // const carsToShow = filteredCars.length > 0 || Object.keys(filters).length > 0 ? filteredCars : cars;
+
+  const carsToShow = isFilterApplied ? filteredCars : cars;
+
   return (
     <>
-      <Filter onFilter={setFilters} />
+      <Filter onFilter={handleFilter} />
       <ul className={s.wrapper}>
-        {cars.map((car) => (
+        {carsToShow.map((car) => (
           <CarCard key={car.id} car={car} />
         ))}
       </ul>
-      {page < totalPages && (
+      {!isFilterApplied && page < totalPages && (
         <div>
-          <Button onClick={handleLoadMore} text="Load more"></Button>
+          <button onClick={handleLoadMore} type="button" className={s.button}>
+            Load more
+          </button>
         </div>
       )}
     </>

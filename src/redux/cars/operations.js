@@ -8,11 +8,13 @@ export const fetchCars = createAsyncThunk("cars/fetchCars", async ({ page = 1, f
     const params = new URLSearchParams({ page });
 
     if (filters.brand) params.append("brand", filters.brand);
-    if (filters.price) params.append("price", filters.price);
+    if (filters.rentalPrice) params.append("rentalPrice", filters.rentalPrice);
     if (filters.mileageFrom) params.append("mileageFrom", filters.mileageFrom);
     if (filters.mileageTo) params.append("mileageTo", filters.mileageTo);
 
+    console.log("FETCH PARAMS:", params.toString());
     const response = await axios.get(`/cars?${params.toString()}`);
+
     return { ...response.data, page };
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

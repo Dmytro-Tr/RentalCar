@@ -1,10 +1,10 @@
 .wrapper {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: center;
   gap: 16px;
-  width: 924px;
-  margin: 0 auto 56px;
+  margin-bottom: 56px;
 }
 
 .boxFilter {
