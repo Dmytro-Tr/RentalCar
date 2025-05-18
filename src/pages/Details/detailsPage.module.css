@@ -1,0 +1,99 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 84px 120px 104px;
+  gap: 72px;
+  text-align: left;
+}
+
+.imgFormBox {
+  max-width: 640px;
+}
+
+.img {
+  border-radius: 19px;
+  margin-bottom: 40px;
+}
+
+.descSubBox {}
+
+.subBox {
+  margin-bottom: 68px;
+}
+
+.subTitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  text-align: center;
+  color: var(--main);
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.subId {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  padding-left: 16px;
+
+}
+
+.text {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 448px;
+}
+
+.subCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.subMileage {
+  padding-left: 8px;
+}
+
+.subRentalPrice {
+  text-align: left;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--button);
+}
+
+.descBox {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  height: 100%;
+}
+
+.descTitle {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.descAside {}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.iconCheck {
+  width: 16px;
+  height: 16px;
+}

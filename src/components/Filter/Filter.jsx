@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { IoChevronDownOutline } from "react-icons/io5";
 import { selectBrands, selectCars } from "../../redux/cars/selectors";
 import { fetchBrands, fetchCars } from "../../redux/cars/operations";
 import Button from "../Button/Button";
 import s from "./filter.module.css";
+
+const formatNumberWithCommas = (num) => {
+  if (!num) return "";
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
 const Filter = ({ onFilter }) => {
   const dispatch = useDispatch();
@@ -31,7 +37,19 @@ const Filter = ({ onFilter }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Для поля brand не застосовуємо фільтр
+    if (name === "brand") {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      return;
+    }
+
+    // Для числових полів видаляємо всі нецифрові символи
+    const numericValue = value.replace(/[^0-9]/g, "");
+    setFormData((prev) => ({
+      ...prev,
+      [name]: numericValue,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -43,11 +61,6 @@ const Filter = ({ onFilter }) => {
       mileageFrom: formData.mileageFrom ? Number(formData.mileageFrom) : undefined,
       mileageTo: formData.mileageTo ? Number(formData.mileageTo) : undefined,
     };
-    // console.log("formData", formData);
-    // console.log(
-    //   "Cars",
-    //   cars.map((car) => car.rentalPrice)
-    // );
 
     onFilter(parsedFilters);
   };
@@ -56,25 +69,31 @@ const Filter = ({ onFilter }) => {
     <form className={s.wrapper} onSubmit={handleSubmit}>
       <div className={s.boxFilter}>
         <label className={s.label}>Car brand</label>
-        <select name="brand" value={formData.brand} onChange={handleChange} className={s.select}>
-          <option value="">Choose a brand</option>
-          {brands.map((brand) => (
-            <option key={brand} value={brand}>
-              {brand}
-            </option>
-          ))}
-        </select>
+        <div className={s.selectIconBox}>
+          <select name="brand" value={formData.brand} onChange={handleChange} className={s.select}>
+            <option value="">Choose a brand</option>
+            {brands.map((brand) => (
+              <option key={brand} value={brand}>
+                {brand}
+              </option>
+            ))}
+          </select>
+          <IoChevronDownOutline className={s.chevronBrand} />
+        </div>
       </div>
       <div className={s.boxFilter}>
         <label className={s.label}>Price/ 1 hour</label>
-        <select name="rentalPrice" value={formData.rentalPrice} onChange={handleChange} className={s.select}>
-          <option value="">Choose a price</option>
-          {allPrices.map((p) => (
-            <option key={p} value={p}>
-              To ${p}
-            </option>
-          ))}
-        </select>
+        <div className={s.selectIconBox}>
+          <select name="rentalPrice" value={formData.rentalPrice} onChange={handleChange} className={s.select}>
+            <option value="">Choose a price</option>
+            {allPrices.map((p) => (
+              <option key={p} value={p}>
+                To ${p}
+              </option>
+            ))}
+          </select>
+          <IoChevronDownOutline className={s.chevronBrand} />
+        </div>
       </div>
       <div className={s.boxFilter}>
         <label className={s.label}>Сar mileage / km</label>
@@ -84,7 +103,8 @@ const Filter = ({ onFilter }) => {
             name="mileageFrom"
             placeholder="From"
             className={s.inputLeft}
-            value={formData.mileageFrom}
+            // value={formData.mileageFrom}
+            value={formData.mileageFrom ? `From ${formatNumberWithCommas(formData.mileageFrom)}` : ""}
             onChange={handleChange}
           />
           <input
@@ -92,7 +112,8 @@ const Filter = ({ onFilter }) => {
             name="mileageTo"
             placeholder="To"
             className={s.inputRight}
-            value={formData.mileageTo}
+            // value={formData.mileageTo}
+            value={formData.mileageTo ? `To ${formatNumberWithCommas(formData.mileageTo)}` : ""}
             onChange={handleChange}
           />
         </div>

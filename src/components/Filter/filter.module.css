@@ -77,3 +77,21 @@
   width: 156px;
   height: 44px;
 }
+
+.selectIconBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.chevronBrand {
+  position: absolute;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  transition: transform 250ms ease-in;
+}
+
+.select:focus+.chevronBrand {
+  transform: rotateX(180deg);
+}

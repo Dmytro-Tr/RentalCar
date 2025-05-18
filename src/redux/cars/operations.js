@@ -12,7 +12,6 @@ export const fetchCars = createAsyncThunk("cars/fetchCars", async ({ page = 1, f
     if (filters.mileageFrom) params.append("mileageFrom", filters.mileageFrom);
     if (filters.mileageTo) params.append("mileageTo", filters.mileageTo);
 
-    // console.log("FETCH PARAMS:", params.toString());
     const response = await axios.get(`/cars?${params.toString()}`);
 
     return { ...response.data, page };
@@ -29,3 +28,8 @@ export const fetchBrands = createAsyncThunk("cars/fetchBrands", async (_, thunkA
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const fetchCarById = async (id) => {
+  const response = await axios.get(`/cars/${id}`);
+  return response.data;
+};

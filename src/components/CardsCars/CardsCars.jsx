@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/cars/operations";
 import CarCard from "../CarCard/CarCard";
-import Button from "../Button/Button";
 import Filter from "../Filter/Filter";
 import s from "./cardsCars.module.css";
 import { selectCars, selectTotalPages } from "../../redux/cars/selectors";
@@ -16,8 +15,6 @@ const CardsCars = () => {
   const [page, setPage] = useState(1);
   const [filteredCars, setFilteredCars] = useState([]);
   const [isFilterApplied, setIsFilterApplied] = useState(false);
-
-  console.log("Cars", cars);
 
   useEffect(() => {
     setPage(1);

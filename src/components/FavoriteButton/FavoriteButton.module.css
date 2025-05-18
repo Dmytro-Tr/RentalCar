@@ -1,0 +1,16 @@
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.outline {
+  size: 16px;
+  color: var(--badges);
+  ;
+}
+
+.fill {
+  size: 16px;
+  fill: var(--button);
+}

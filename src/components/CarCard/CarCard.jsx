@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom";
-import Button from "../Button/Button";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import s from "./carCard.module.css";
 
 const CarCard = ({ car }) => {
   return (
     <li className={s.item}>
+      <div className={s.favoriteIcon}>
+        <FavoriteButton carId={car.id} />
+      </div>
       <div className={s.cardBox}>
         <img src={car.img} alt={car.model} className={s.image} />
         <div className={s.subtitle}>

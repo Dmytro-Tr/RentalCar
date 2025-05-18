@@ -39,7 +39,7 @@
   border-radius: 12px;
   width: 276px;
   height: 44px;
-  background: var(--button);
+  background-color: var(--button);
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
@@ -49,6 +49,11 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  transition: background-color 250ms ease-in;
+}
+
+.link:hover {
+  background-color: var(--button-hover);
 }
 
 .contentBox {
