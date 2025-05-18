@@ -1,12 +1,17 @@
-# React + Vite
+# Project "Car Rental"!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### On this site you can book a car and enjoy your trips. 
 
-Currently, two official plugins are available:
+The site implements:
+- viewing all available cars of our company;
+- the ability to choose a car of your favorite brand;
+- or choose a car at an hourly rate;
+- you can also choose a car depending on its mileage.
+  
+If you like the car now and do not want to lose it, browsing other cars, it does not matter, in the right corner there is a choice of your favorite car. Click on the heart, and you will not lose the car that you already like.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+And when you finally choose a car that completely satisfies you, you can click the "Read more" button, check all possible characteristics of the car and use the convenient form to order a car in our salon!
 
-## Expanding the ESLint configuration
+### We are waiting for you on our site and wish you good travels with us!
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## rental-car-alpha-five.vercel.app
