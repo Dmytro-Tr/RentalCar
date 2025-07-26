@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   padding: 84px 120px 104px;
   gap: 72px;
   text-align: left;
@@ -96,4 +96,45 @@
 .iconCheck {
   width: 16px;
   height: 16px;
+}
+
+@media screen and (max-width:1280px) {
+  .wrapper {
+    /* flex-wrap: wrap; */
+    padding: 50px 72px 62px;
+    gap: 44px;
+  }
+
+  .imgFormBox {
+    max-width: 440px;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .wrapper {
+    flex-wrap: wrap;
+    padding: 50px 72px 62px;
+    gap: 44px;
+  }
+
+  .imgFormBox {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .wrapper {
+    flex-wrap: wrap;
+    padding: 25px 36px 30px;
+    gap: 22px;
+  }
+
+  .subBox {
+    margin-bottom: 34px;
+  }
+
+  .descBox {
+    gap: 40px;
+    height: auto;
+  }
 }
